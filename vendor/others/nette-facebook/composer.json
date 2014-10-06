@@ -1,0 +1,30 @@
+{
+    "name": "illagrenan/nette-facebook-connect",
+    "description": "Facebook Connect for nette PHP framework",
+    "keywords": ["facebook", "nette"],
+    "type": "library",
+    "homepage": "https://github.com/illagrenan/nette-facebook-connect",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Vašek Dohnal",
+            "email": "info@vaclavdohnal.cz",
+            "homepage": "http://www.vaclavdohnal.cz",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@vaclavdohnal.cz",
+        "forum": "https://github.com/illagrenan/nette-facebook-connect/issues"
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "nette/nette": "@dev",
+        "facebook/php-sdk": "@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Illagrenan\\Facebook\\": "src/"
+        }
+    }
+}

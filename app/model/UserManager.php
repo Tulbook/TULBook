@@ -16,7 +16,7 @@ class UserManager extends ModelContainer implements \Nette\Security\IAuthenticat
         
     }
 
-    public function createUser(){
+    public function createUser(array $data){
         
     }
     

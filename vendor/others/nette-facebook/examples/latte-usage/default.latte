@@ -1,0 +1,17 @@
+{block #content}
+<h1>Nette FacebookConnect</h1>
+
+    {ifset $user}
+<p>
+    <strong>
+        Ahoj {$user->getFirstName()}, jak se dnes měl
+            {if $user->getGender() == \Illagrenan\Facebook\UserGender::FEMALE}a{/if}
+    </strong>
+</p>
+    {/ifset}
+
+<ul>
+    <li><a href="{link facebookLogin!}">Přihlásit se do aplikace Facebookem</a></li>
+    <li><a href="{link facebookLogout!}">Odhlásit se z aplikace (ale i z Facebooku)</a></li>
+</ul>
+{/block}

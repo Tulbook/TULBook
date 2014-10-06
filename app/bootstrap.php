@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../vendor/others/bdump.php';
-//require __DIR__ . '/../vendor/others/FacebookSDK/src/facebook.php';
+require __DIR__ . '/../vendor/others/FacebookSDK/src/facebook.php';
 
 $configurator = new Nette\Configurator;
 
@@ -15,7 +15,7 @@ $configurator->createRobotLoader()
 	->addDirectory(__DIR__)
 	->addDirectory(__DIR__ . '/../vendor/others')
 	->register();
-
+\Illagrenan\Facebook\DI\FacebookConnectExtension::register($configurator);
 $configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->addConfig(__DIR__ . '/config/config.local.neon');
 
