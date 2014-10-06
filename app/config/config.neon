@@ -10,13 +10,6 @@ parameters:
 php:
 	date.timezone: Europe/Prague
 
-facebookConnect:
-	appName: 'TULApp'
-	appId: '1483912428535676'
-	secret: 'd308b7bb708f9ec8b5ed6a20be53bc21'
-	canvasUrl: 'http://demo.tulbook.webowna.cz/'
-	description: ''
-	scope: 'email'
 nette:
 	application:
 		errorPresenter: Error
@@ -27,14 +20,16 @@ nette:
 		expiration: 14 days
 	database:
 		dsn: 'mysql:host=127.0.0.1;dbname=tulbook_webowna_cz'
-		user: tulbook.webowna.cz
-		password: m71AcsVr82
+		user: root 
+		password: 
 		debugger: yes
 		options:
 			lazy: yes
 services:
 	- App\Model\UserManager
 	- App\RouterFactory
+	- App\Model\ApartmentModel
 	router: @App\RouterFactory::createRouter
 constants:
 	passwordLength: 6
+	idLength: 6

@@ -2,49 +2,56 @@
 
 {block content}
 {form registrationForm}
-<table>
-    <tr>
-        <td> {label jmeno/}</td>
-        <td>{input jmeno}</td>
-    </tr>
-     <tr>
-        <td>{label prijmeni/} </td>
-        <td>{input prijmeni}</td>
-    </tr>
-      <tr>
-        <td>{label email/} </td>
-        <td>{input email}</td>
-    </tr>
-    <tr>
-        <td>{label prezdivka/} </td>
-        <td>{input prezdivka}</td>
-    </tr>
-     <tr>
-        <td>{label vek/} </td>
-        <td>{input vek}</td>
-    </tr>
-    <tr><td colspan="2" align="center">Kontaktní údaje</td></tr>
-     <tr>
-        <td>{label telefon/} </td>
-        <td>{input telefon}</td>
-    </tr>
-     <tr>
-        <td>{label mesto/} </td>
-        <td>{input mesto}</td>
-    </tr>
-     <tr>
-        <td>{label ulice/} </td>
-        <td>{input ulice}</td>
-    </tr>
-     <tr>
-        <td>{label cp/} </td>
-        <td>{input cp}</td>
-    </tr>
-    <tr><td colspan="2" align="center">Informace o ubytování na pokoji</td></tr>
-       <tr>
-        <td>{label budova/} </td>
-        <td>{input budova}</td>
-    </tr>
+    <div n:if="$form->ownErrors" class="msg msg-error" >
+        <p n:foreach="$form->ownErrors as $error">{$error}</p>
+    </div>
+    <table>
+        <tr>
+            <td> {label jmeno/}</td>
+            <td>{input jmeno}</td>
+        </tr>
+        <tr>
+            <td>{label prijmeni/} </td>
+            <td>{input prijmeni}</td>
+        </tr>
+        <tr>
+            <td>{label email/} </td>
+            <td>{input email}</td>
+        </tr>
+         <tr>
+            <td>{label heslo/} </td>
+            <td>{input heslo}</td>
+        </tr>
+        <tr>
+            <td>{label prezdivka/} </td>
+            <td>{input prezdivka}</td>
+        </tr>
+        <tr>
+            <td>{label vek/} </td>
+            <td>{input vek}</td>
+        </tr>
+        <tr><td colspan="2" align="center">Kontaktní údaje</td></tr>
+        <tr>
+            <td>{label telefon/} </td>
+            <td>{input telefon}</td>
+        </tr>
+        <tr>
+            <td>{label mesto/} </td>
+            <td>{input mesto}</td>
+        </tr>
+        <tr>
+            <td>{label ulice/} </td>
+            <td>{input ulice}</td>
+        </tr>
+        <tr>
+            <td>{label cp/} </td>
+            <td>{input cp}</td>
+        </tr>
+        <tr><td colspan="2" align="center">Informace o ubytování na pokoji</td></tr>
+        <tr>
+            <td>{label budova/} </td>
+            <td>{input budova}</td>
+        </tr>
         <td>{label patro/} </td>
         <td>{input patro}</td>
     </tr>
@@ -56,7 +63,7 @@
         <td>{label tel_cislo/} </td>
         <td>{input tel_cislo}</td>
     </tr>
-     <tr>
+    <tr>
         <td>{label send/} </td>
         <td>{input send}</td>
     </tr>

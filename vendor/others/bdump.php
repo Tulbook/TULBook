@@ -14,5 +14,11 @@ if (!function_exists('bdump')) {
        $title .= (empty($title) ? '' : ' – ');
        return Tracy\Debugger::barDump($var, $title . $source . ' (' . $line . ')');
    }
+   
 
+}
+function array_key_rename($array, $old_key, $new_key) {
+    $keys = array_keys($array);
+    $keys[array_search($old_key, $keys)] = $new_key;
+    return array_combine($keys, $array);
 }
