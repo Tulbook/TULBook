@@ -25,7 +25,6 @@ class HomepagePresenter extends BasePresenter {
         } else { // Uživatel je přihlášený v aplikaci
             /* @var $user Illagrenan\Facebook\FacebookUser */
             $user = $this->facebookConnect->getFacebookUser();
-            $this->getUser()->isLoggedIn() = true;
             $this->template->user = $user;
         }
     }

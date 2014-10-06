@@ -1,8 +1,6 @@
 <?php
-
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../vendor/others/bdump.php';
-require __DIR__ . '/../vendor/others/FacebookSDK/src/facebook.php';
 
 $configurator = new Nette\Configurator;
 
