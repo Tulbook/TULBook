@@ -22,6 +22,7 @@ class RouterFactory {
                 Route::VALUE => 'Homepage',
                 Route::FILTER_TABLE => array(
                     "prihlaseni" => "Sign",
+                    "registrace" => "Registration",
                 ),
             ),
             'action' => 'default',

@@ -10,15 +10,11 @@ use Nette,
  */
 class HomepagePresenter extends BasePresenter {
 
-    /**
-     * @var \Illagrenan\Facebook\FacebookConnect @inject
-     */
-  
-
-    public function renderDefault() {
-      
+    public function startup() {
+        parent::startup();
     }
-
-   
     
+    public function renderDefault() {
+     
+    }
 }

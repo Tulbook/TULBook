@@ -2,6 +2,7 @@
 
 {block content}
 {form registrationForm}
+    <h1 n:block="title">Registrace</h1>
     <div n:if="$form->ownErrors" class="msg msg-error" >
         <p n:foreach="$form->ownErrors as $error">{$error}</p>
     </div>
@@ -47,7 +48,7 @@
             <td>{label cp/} </td>
             <td>{input cp}</td>
         </tr>
-        <tr><td colspan="2" align="center">Informace o ubytování na pokoji</td></tr>
+        <tr><td colspan="2" align="center">Ubytování na koleji</td></tr>
         <tr>
             <td>{label budova/} </td>
             <td>{input budova}</td>
@@ -62,6 +63,9 @@
     <tr>
         <td>{label tel_cislo/} </td>
         <td>{input tel_cislo}</td>
+    </tr>
+    <tr>
+        <td colspan="2">* povinné položky</td>
     </tr>
     <tr>
         <td>{label send/} </td>

@@ -9,7 +9,8 @@ use Nette,
 /**
  * Description of RegistrationPresenter
  *
- * @author Vojta
+ * @author Vojtěch Šindler
+ * @version 1.0
  */
 class RegistrationPresenter extends BasePresenter {
 
@@ -31,39 +32,54 @@ class RegistrationPresenter extends BasePresenter {
     protected function createComponentRegistrationForm() {
         $form = new Nette\Application\UI\Form;
 
-        $form->addText('email', 'Email')
-                ->setRequired('Zadej prosím svůj email.');
-        $form->addText('jmeno', 'Jméno')
+        $form->addText('email', 'Email*')
+                ->setType("email")
+                ->setRequired('Zadej prosím svůj email')
+                ->addRule(UI\Form::EMAIL, "Špatný formát emailu");
+        $form->addText('jmeno', 'Jméno*')
                 ->setRequired('Zadej své jméno');
-        $form->addText('prijmeni', 'Příjmení')
+        $form->addText('prijmeni', 'Příjmení*')
                 ->setRequired('Zadej své příjmení');
-        $form->addPassword('heslo', 'Heslo:')
+        $form->addPassword('heslo', 'Heslo*')
                 ->setRequired('Zadej heslo')
                 ->addRule(UI\Form::MIN_LENGTH, 'Heslo musí mít alespoň %d znaky', passwordLength);
         $form->addText('prezdivka', 'Přezdívka');
-        $form->addText('telefon', 'Mobilní telefon')
+        $form->addText('telefon', 'Telefon')
+                ->setType("number")
                 ->addRule(UI\Form::LENGTH, 'Číslo musí mít %d znaky', 9)
-                ->addRule(UI\Form::NUMERIC, 'Číslo musí obsahovat pouze číslice');
-        $form->addText('vek', 'Věk');
+                ->addRule(UI\Form::NUMERIC, 'Telefoní číslo musí obsahovat pouze číslice');
+        $form->addText('vek', 'Věk')
+                ->setType("number")
+                ->addRule(UI\Form::NUMERIC, 'Věk musí obsahovat pouze číslice');
         $form->addText('mesto', 'Město');
         $form->addText('ulice', 'Ulice');
         $form->addText('cp', 'Číslo popisné');
-        $form->addText('tel_cislo', 'Číslo kolejního telefonu')
+        $form->addText('tel_cislo', 'Telefon na pokoji*')
+                ->setType("number")
+                ->setRequired("Nevyplnil jsi číslo kolejního telefonu")
                 ->addRule(UI\Form::LENGTH, 'Číslo musí mít %d znaky', 4)
-                ->addRule(UI\Form::PATTERN, 'Musí obsahovat číslici', '.*[0-9].*');
-        $form->addSelect('budova', 'Budova kolejí', array("A" => "A", "B" => "B", "C" => "C", "D" => "D", "E" => "E", "F" => "F"));
-        $form->addText('pokoj', 'Pokoj:');
-        $form->addText('patro', 'Patro');
+                ->addRule(UI\Form::NUMERIC, 'Věk musí obsahovat pouze číslice');
+        $form->addSelect('budova', 'Budova*', array("A" => "A", "B" => "B", "C" => "C", "D" => "D", "E" => "E", "F" => "F"))
+                ->setPrompt("Vyber budovu kolejí")
+                ->setRequired("Nevyplnil jsi budovu");
+        $form->addText('pokoj', 'Pokoj*')
+                ->setType("number")
+                ->setRequired("Nevyplnil jsi číslo pokoje")
+                ->addRule(UI\Form::NUMERIC, 'Číslo pokoje musí obsahovat pouze číslice');
+        $form->addText('patro', 'Patro*')
+                ->setType("number")
+                ->setRequired("Nevyplnil jsi patro")
+                ->addRule(UI\Form::NUMERIC, 'Patro musí obsahovat pouze číslice');
 
         $form->addSubmit('send', 'Zaregistrovat se');
-        $form->onSuccess[] = $this->loginSucceeded;
+        $form->onSuccess[] = $this->registrationSucceeded;
         return $form;
     }
 
-    public function loginSucceeded($form, $values) {
+    public function registrationSucceeded($form, $values) {
         $this->login->save($values);
-        $this->flashMessage("Zaregistrováno");
-        $this->redirect("this");
+        $this->flashMessage("Tvůj účet byl vytvořen, můžeš se přihlásit");
+        $this->redirect("Homepage:");
     }
 
 }
