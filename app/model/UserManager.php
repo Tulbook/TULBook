@@ -29,7 +29,7 @@ class UserManager extends ModelContainer implements \Nette\Security\IAuthenticat
 
     public function authenticate(array $credentials) {
         list($email, $password) = $credentials;
-        $data = $this->database->table("uzivatele")->where("email", $email)->fetch();
+        $row = $this->database->table("uzivatele")->where("email", $email)->fetch();
         if (!$row) {
             throw new Nette\Security\AuthenticationException('Tento email není v databázi.', self::IDENTITY_NOT_FOUND);
         } elseif (!Passwords::verify($password, $row["heslo"])) {

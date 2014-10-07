@@ -31,7 +31,7 @@ class SignPresenter extends BasePresenter {
 
     public function signInFormSucceeded($form, $values) {
         try {
-            $this->getUser()->login($values->username, $values->password);
+            $this->getUser()->login($values->email, $values->heslo);
             $this->redirect('Homepage:');
         } catch (Nette\Security\AuthenticationException $e) {
             $form->addError($e->getMessage());
